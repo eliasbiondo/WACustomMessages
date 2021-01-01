@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum scale">
+    <title>WACustomMessages</title>
+
+    <link
+
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap"
+
+    >
+
+
+</head>
+<style>
+
+    :root {
+        font-size: 62.5%;
+    }
+
+    * {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 200;
+        margin: 0;
+        padding: 0;
+        color: black;
+        list-style-type: none;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 80rem;
+        height: 47rem;
+        display: flex;
+        justify-content: center;
+    }
+
+        .container {
+            width: 100%;
+            padding: 4rem 6rem;
+        }
+
+            .logo {
+                width: 27rem;
+                height: 6rem;
+                display: flex;
+                justify-content: space-between;
+            }
+
+                .logo img {
+                    width: 6rem;
+                    height: 6rem;
+                }
+
+                .texts h1 {
+                    font-size: 2.4rem;
+                    font-weight: 400;
+                }
+
+                .texts h2 {
+                    font-size: 2.4rem;
+                }
+
+                .content {
+                    margin-top: 2.8rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                }
+
+                    .form {
+                        display: flex;
+                        flex-direction: column;
+                        flex: 1;
+                    }
+
+                        .form label {
+                            font-size: 2.4rem;
+                        }
+
+                        .add-name-or-group {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-top: 0.5rem;
+                            margin-bottom: 2rem;
+                        }
+
+                            .add-name-or-group input {
+                                width: 26rem;
+                                height: 5rem;
+                                background-color: #F2F2F2;
+                                border-radius: 1rem;
+                                font-size: 2.4rem;
+                                padding: 0rem 2rem;
+                            }
+
+                            .add-name-or-group button {
+                                width: 5rem;
+                                height: 5rem;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: 0.5rem;
+                                background-color: #36DD54;
+                                cursor: pointer;
+                            }
+
+                            .add-name-or-group button:hover {
+                                background-color: rgb(43, 175, 67);
+                            }
+
+                            .add-name-or-group button img {
+                                width: 2rem;
+                            }
+
+                        .form textarea {
+                            width: 100%;
+                            height: 25rem;
+                            background-color: #F2F2F2;
+                            border-radius: 1rem;
+                            font-size: 2.4rem;
+                            padding: 1.5rem 2rem;
+                            margin-top: 0.5rem;
+                            margin-bottom: 4rem;
+                            resize: none;
+                        }
+
+                    .info-box {
+                        flex: 1;
+                        height: 40rem;
+                        margin-left: 4rem;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                    }
+
+
+                        .targets-list {
+                            height: 14.4rem;
+                        }
+
+                        .targets-list h1, .template-strings h1 {
+                            font-size: 2.4rem;
+                            font-weight: 300;
+                        }
+
+                        .targets-list p {
+                            height: 2.4rem;
+                            font-size: 2.4rem;
+                            font-weight: 200;
+                        }
+                        
+                        .template-strings p {
+                            font-size: 2rem;
+                            font-weight: 200;
+                        }
+                        .send-messages {
+                            width: 100%;
+                            height: 4rem;
+                            background-color: #36DD54;
+                            color: white;
+                            font-weight: 400;
+                            border-radius: 0.5rem;
+                            cursor: pointer;
+                        }
+
+                        .send-messages:hover {
+                            background-color: rgb(43, 175, 67);
+                        }
+
+
+</style>
+<body>
+    <div class="container">
+        <header class="logo">
+            <img src="./images/whatsapp-logo.png" alt="WA logo">
+            <div class="texts">
+                <h1>WhatsApp</h1>
+                <h2>Custom Messages</h2>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="form">
+                <label for="">Contact or group name:</label>
+                <div class="add-name-or-group">
+                    <input type="text" name="name" id="name" autocomplete="off">
+                    <button class="add-btn" id="addBtn">
+                        <img src="./images/plus-icon.svg">
+                    </button>
+                </div>
+
+
+                <label for="">Message</label>
+                <textarea name="message" id="message" autocomplete="off"></textarea>
+            </div>
+            <div class="info-box">
+                <div class="targets-list" id="targetsList">
+                    <h1>Target's list:</h1>
+                </div>
+                <div class="template-strings">
+                    <h1>Template strings:</h1>
+                    <p>${name} : group or contact/name</p>
+                    <p>${currentYear}: current year</p>
+                </div>
+                <button class="send-messages" id="send-messages">
+                    Send messages
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
