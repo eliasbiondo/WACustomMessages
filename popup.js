@@ -2,6 +2,7 @@ const addBtn = document.querySelector('#addBtn');
 const targetsList = document.querySelector('#targetsList')
 
 let names = [];
+/* let counter = 1; */
 
 addBtn.onclick = function (element) {
     const name = document.querySelector('#name');
@@ -25,16 +26,41 @@ addBtn.onclick = function (element) {
 }
 
 
+
+const removeRepeat = document.querySelector('#removeOneTime')
+const addRepeat = document.querySelector('#addOneTime')
+const repeatTimes = document.querySelector('#repeat-n-times')
+
+let counter = 1;
+
+removeRepeat.onclick = function(element) {
+  if (counter <= 1) {
+    window.alert("You can't set repeat times to 0!")
+  } else {
+    counter -= 1;
+    repeatTimes.innerHTML = `${counter}`
+  }
+}
+
+addRepeat.onclick = function(element) {
+  if (counter >= 5) {
+    window.alert("You can't set repeat times more than 5!")
+  } else { 
+    counter += 1;
+    repeatTimes.innerHTML = `${counter}`
+  }
+}
+
 const sendMessagesBtn = document.querySelector('#send-messages')
-
-
-
-
 sendMessagesBtn.onclick = function(element) {
 
-          console.log(names)
-          let message = document.querySelector('#message').value
-          console.log(message)
+        let message = document.querySelector('#message').value
+
+        if (names.length < 1) {
+          window.alert('Please add at least one contact or group name!')
+        } else if (!message || message.replace(/\s/g, '').length < 1 ) {
+          window.alert('Please enter a valid message!')
+        } else {
 
           chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             
@@ -45,6 +71,7 @@ sendMessagesBtn.onclick = function(element) {
 
                 names = []
                 message = "${message}"
+                counter = ${counter};
 
                 `,
 
@@ -86,4 +113,6 @@ sendMessagesBtn.onclick = function(element) {
                 );
 
             })
+        }
+          
 };

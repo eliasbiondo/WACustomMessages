@@ -1,5 +1,3 @@
-console.log(testando)
-
 var interval = 1000;
 var promise = Promise.resolve();
 names.forEach(function (name) {
@@ -39,7 +37,6 @@ names.forEach(function (name) {
         openChat()
 
         function sendMessage() {
-            counter = 2
 
             for (i = 0; i < counter; i++) { 
                 messageBox = document.querySelector('[contenteditable="true"][data-tab="6"]');

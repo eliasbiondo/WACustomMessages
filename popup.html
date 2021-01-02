@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum scale">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WACustomMessages</title>
 
     <link
@@ -99,22 +99,43 @@
                                 font-size: 2.4rem;
                                 padding: 0rem 2rem;
                             }
-
-                            .add-name-or-group button {
+                            .rem-btn {
                                 width: 5rem;
                                 height: 5rem;
                                 justify-content: center;
-                                align-items: center;
+                
+                                border-radius: 0.5rem;
+                                background-color: #36DD54;
+                                cursor: pointer;
+                                position: relative;
+                            }
+
+                            .rem-btn:hover {
+                                background-color: rgb(43, 175, 67);
+                            }
+
+                            .rem-btn img {
+                                width: 2rem;
+                                position: absolute;
+                                top: 2rem;
+                                left: 1.5rem;
+                            }
+
+                            .add-btn {
+                                width: 5rem;
+                                height: 5rem;
+                                justify-content: center;
+                                
                                 border-radius: 0.5rem;
                                 background-color: #36DD54;
                                 cursor: pointer;
                             }
 
-                            .add-name-or-group button:hover {
+                            .add-btn:hover {
                                 background-color: rgb(43, 175, 67);
                             }
 
-                            .add-name-or-group button img {
+                            .add-btn img {
                                 width: 2rem;
                             }
 
@@ -144,14 +165,14 @@
                             height: 14.4rem;
                         }
 
-                        .targets-list h1, .template-strings h1 {
-                            font-size: 2.4rem;
-                            font-weight: 300;
+                        .targets-list h1, .template-strings h1, .repeat-n-times h1 {
+                            font-size: 2rem;
+                            font-weight: 400;
                         }
 
                         .targets-list p {
-                            height: 2.4rem;
-                            font-size: 2.4rem;
+                            height: 2rem;
+                            font-size: 2rem;
                             font-weight: 200;
                         }
                         
@@ -159,6 +180,18 @@
                             font-size: 2rem;
                             font-weight: 200;
                         }
+
+                        .select-repeat-times {
+                            display: flex;
+                            align-items: center;
+                            margin-top: 1rem;
+                        }
+
+                        .select-repeat-times p {
+                            font-size: 2rem;
+                            margin: 0rem 1rem;
+                        }
+
                         .send-messages {
                             width: 100%;
                             height: 4rem;
@@ -208,6 +241,19 @@
                     <p>${name} : group or contact/name</p>
                     <p>${currentYear}: current year</p>
                 </div>
+                <div class="repeat-n-times">
+                    <h1>How many times?</h1>
+                    <div class="select-repeat-times">
+                        <button class="rem-btn" id="removeOneTime">
+                            <img src="./images/minus-icon.svg">
+                        </button>
+                        <p id="repeat-n-times">1</p>
+                        <button class="add-btn" id="addOneTime">
+                            <img src="./images/plus-icon.svg">
+                        </button>
+                    </div>
+                </div>
+
                 <button class="send-messages" id="send-messages">
                     Send messages
                 </button>

@@ -1,7 +1,7 @@
 {
-    "name": "Getting Started Example",
+    "name": "WACustom-Messages",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "Massive WhatsApp custom message sender",
     "permissions": ["activeTab", "declarativeContent", "storage"],
     "background": {
       "scripts": ["background.js", "popup.js", "script.js"],
