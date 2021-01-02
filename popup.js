@@ -2,7 +2,6 @@ const addBtn = document.querySelector('#addBtn');
 const targetsList = document.querySelector('#targetsList')
 
 let names = [];
-let message = '';
 
 addBtn.onclick = function (element) {
     const name = document.querySelector('#name');
@@ -12,15 +11,13 @@ addBtn.onclick = function (element) {
       window.alert('Please enter a valid contact or group name!')
     } else if (names.length < 5) {
       
-      names.push(`${nameValue}`);
+      names.push(`'${nameValue}'`);
 
       const p = document.createElement('p');
       p.innerHTML = `${nameValue}`
       targetsList.appendChild(p)
 
       name.value = ''
-
-      message = document.querySelector('#message').value
 
     } else {
       window.alert('You can only add 5 contact or group names!')
@@ -30,35 +27,63 @@ addBtn.onclick = function (element) {
 
 const sendMessagesBtn = document.querySelector('#send-messages')
 
+
+
+
 sendMessagesBtn.onclick = function(element) {
 
+          console.log(names)
+          let message = document.querySelector('#message').value
+          console.log(message)
 
-    let interval = 5000;
-    let increment = 1;
-
-    names.forEach(name => {
-
-        let runner = setTimeout(() => {
           chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            
             chrome.tabs.executeScript(
+              tabs[0].id,
+              { 
+                code: `
+
+                names = []
+                message = "${message}"
+
+                `,
+
+              },
+              );
+
+            names.forEach(name => {
+              chrome.tabs.executeScript(
                 tabs[0].id,
-                {code: `
-                    contactElement = document.querySelector("[title='${name}']")
-                    mouseEvent = document.createEvent('MouseEvent');
-                    mouseEvent.initEvent('mousedown', true, true);
-                    contactElement.dispatchEvent(mouseEvent)
+                { 
+                  code: `
 
-                ` });
-          });
-        }, interval * increment);
+                  names.push(${name});
 
-        increment = increment + 1;
+                  `,
 
+                },
+                );
+            })
 
+                chrome.tabs.executeScript(
+                  tabs[0].id,
+                  { 
+                    code: `
+  
+                    console.log(names)
+  
+                    `,
+  
+                  },
+                  );
 
-    })
+              chrome.tabs.executeScript(
+                tabs[0].id,
+                { 
+                  file: './script.js',
 
-    
+                },
+                );
+
+            })
 };
-
-

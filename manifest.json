@@ -4,8 +4,12 @@
     "description": "Build an Extension!",
     "permissions": ["activeTab", "declarativeContent", "storage"],
     "background": {
-      "scripts": ["background.js"],
-      "persistent": false
+      "scripts": ["background.js", "popup.js", "script.js"],
+      "persistent": false,
+      "web_accessible_resources": [
+        "main.js",
+        "my-script.js"
+     ]
     },
     "page_action": {
       "default_popup": "popup.html",
